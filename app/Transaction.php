@@ -1,0 +1,35 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Transaction extends Model
+{
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function box()
+    {
+    	return $this->belongsTo('App\Box');
+    }
+
+    public function card()
+    {
+    	return $this->belongsTo('App\Card');
+    }
+
+    public function courier()
+    {
+    	return $this->belongsTo('App\Courier');
+    }
+
+    public function itemTransactions()
+    {
+        return $this->hasMany('App\ItemTransaction');
+    }
+
+    public function scopeWithRelations(Builder $query)
+    {
+        return $query->with(['box', 'card', 'courier', 'itemTransactions']);
+    }
+}
