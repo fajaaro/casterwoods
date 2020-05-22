@@ -23,15 +23,3 @@ class StoreItem extends FormRequest
         ];
     }
 }
-
-- id int [pk]
-- category_id int [fk from categories table]
-- name string
-- type string
-- description text nullable
-- price int
-- quantity int
-- created_at timestamp
-- updated_at timestamp
-- relation to images table (polymorphic one to many)
-- relation to item_transactions table (one to many)
