@@ -17,10 +17,8 @@ class UpdateItem extends FormRequest
             'category_id' => ['required'],
             'name' => ['required'],
             'type' => ['required'],
-            'description' => ['required'],
             'price' => ['required'],
             'quantity' => ['required'],
-            'images' => ['required'],
         ];
     }
 }

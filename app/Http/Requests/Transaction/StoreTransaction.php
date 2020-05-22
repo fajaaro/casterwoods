@@ -18,8 +18,6 @@ class StoreTransaction extends FormRequest
             'box_id' => ['required'],
             'card_id' => ['required'],
             'courier_id' => ['required'],
-            'card_content' => ['required'],
-            'additional_note' => ['required'],
             'receiver_name' => ['required'],
             'receiver_address' => ['required'],
             'receiver_contact' => ['required'],
