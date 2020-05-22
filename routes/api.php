@@ -12,6 +12,10 @@ Route::name('api.')->namespace('Api')->group(function() {
 	Route::apiResource('items', 'ItemController');
 	Route::apiResource('cards', 'CardController');
 	Route::apiResource('transactions', 'TransactionController');
+	Route::get('/transactions/{transaction}/successAction', 'TransactionController@transactionSuccessAction')->name('transactions.successAction');
+	Route::get('/transactions/{transaction}/failedAction', 'TransactionController@transactionFailedAction')->name('transactions.failedAction');
+
+	Route::apiResource('itemTransactions', 'ItemTransactionController')->except(['index', 'show']);
 });
 
 Route::fallback(function() {

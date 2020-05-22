@@ -17,19 +17,15 @@ class Transaction extends JsonResource
             'card_content' => $this->card_content,
             'receiver_name' => $this->receiver_name,
             'receiver_address' => $this->receiver_address,
-            'total_price' => $this->calculateTotalPrice(),
+            'total_price' => $this->total_price,
+            'status' => $this->status,
             'created_at' => (string)$this->created_at,
             'updated_at' => (string)$this->updated_at,
-            'item_transaction' => $this->whenLoaded('itemTransaction'),
+            'item_transactions' => $this->whenLoaded('itemTransactions'),
+            'user' => $this->whenLoaded('user'),
+            'box' => $this->whenLoaded('box'),
+            'card' => $this->whenLoaded('card'),
+            'courier' => $this->whenLoaded('courier'),
         ];
-    }
-
-    private function calculateTotalPrice()
-    {
-        $boxPrice = $this->box_id->price;
-        $cardPrice = $this->card_id->price;
-        $itemsPrice = $this->itemTransactions()->item->sum('price');
-
-        return $boxPrice + $cardPrice + $itemsPrice;
     }
 }

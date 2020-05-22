@@ -2,11 +2,17 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
     protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 
     public function box()
     {
@@ -30,6 +36,6 @@ class Transaction extends Model
 
     public function scopeWithRelations(Builder $query)
     {
-        return $query->with(['box', 'card', 'courier', 'itemTransactions']);
+        return $query->with(['user', 'box', 'card', 'courier', 'itemTransactions']);
     }
 }

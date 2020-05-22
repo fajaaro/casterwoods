@@ -97,6 +97,16 @@ class ItemController extends Controller
         foreach ($item->images as $image) {
             Storage::delete($image->url);
         }
+
+        // Update total_price suatu data transaction kalo ada itemnya yang dihapus.
+        foreach($item->itemTransactions as $itemTransaction) {
+            $item = $itemTransaction->item;
+
+            $transaction = $itemTransaction->transaction;
+            $transaction->total_price -= $item->price * $itemTransaction->quantity;
+            $transaction->save();
+        }
+
         $item->delete();
 
         return response()->json([
