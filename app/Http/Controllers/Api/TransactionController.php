@@ -30,7 +30,7 @@ class TransactionController extends Controller
         $cardBuyed = Card::find($request->input('card_id'));
 
         // add total_price field to request, so Transaction mass assignment will work fine 
-        $request->request->add([
+        $request->merge([
             'total_price' => $boxBuyed->price + $cardBuyed->price
         ]);
 

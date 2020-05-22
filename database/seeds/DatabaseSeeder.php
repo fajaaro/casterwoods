@@ -14,5 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CourierSeeder::class);
         $this->call(PremadeBoxCategorySeeder::class);
         $this->call(PremadeBoxSeeder::class);
+        $this->call(TransactionSeeder::class);
+        $this->call(ItemTransactionSeeder::class);
     }
 }
