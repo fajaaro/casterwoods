@@ -26,8 +26,8 @@ class TransactionController extends Controller
 
     public function store(StoreTransaction $request)
     {
-        $boxBuyed = Box::find($request->box_id);
-        $cardBuyed = Card::find($request->card_id);
+        $boxBuyed = Box::find($request->input('box_id'));
+        $cardBuyed = Card::find($request->input('card_id'));
 
         // add total_price field to request, so Transaction mass assignment will work fine 
         $request->request->add([
