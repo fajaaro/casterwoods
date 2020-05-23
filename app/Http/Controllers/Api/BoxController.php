@@ -68,13 +68,15 @@ class BoxController extends Controller
         $box->fill($request->all());
         $box->save();
 
-        $numberOfImages = count($request->file('images'));
-        for ($i = 0; $i < $numberOfImages; $i++) {
-            $url = Storage::putFile('images/boxes', $request->file('images')[$i]);
+        if ($request->hasFile('images')) {
+            $numberOfImages = count($request->file('images'));
+            for ($i = 0; $i < $numberOfImages; $i++) {
+                $url = Storage::putFile('images/boxes', $request->file('images')[$i]);
 
-            $box->images()->create([
-                'url' => $url,
-            ]);
+                $box->images()->create([
+                    'url' => $url,
+                ]);
+            }            
         }
 
         $box = new BoxResource(

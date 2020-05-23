@@ -67,13 +67,15 @@ class ItemController extends Controller
         $item->fill($request->all());
         $item->save();
 
-        $numberOfImages = count($request->file('images'));
-        for ($i = 0; $i < $numberOfImages; $i++) {
-            $url = Storage::putFile('images/items', $request->file('images')[$i]);
+        if ($request->hasFile('images')) {
+            $numberOfImages = count($request->file('images'));
+            for ($i = 0; $i < $numberOfImages; $i++) {
+                $url = Storage::putFile('images/items', $request->file('images')[$i]);
 
-            $item->images()->create([
-                'url' => $url,
-            ]);
+                $item->images()->create([
+                    'url' => $url,
+                ]);
+            }            
         }
 
         $item = new ItemResource(

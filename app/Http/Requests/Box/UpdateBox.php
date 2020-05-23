@@ -19,7 +19,6 @@ class UpdateBox extends FormRequest
             'description' => ['required'],
             'price' => ['required'],
             'quantity' => ['required'],
-            'images' => ['required'],
         ];
     }
 }
