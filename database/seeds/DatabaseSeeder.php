@@ -16,5 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PremadeBoxSeeder::class);
         $this->call(TransactionSeeder::class);
         $this->call(ItemTransactionSeeder::class);
+
+        // test
     }
 }

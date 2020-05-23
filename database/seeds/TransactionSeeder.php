@@ -36,5 +36,7 @@ class TransactionSeeder extends Seeder
     	);   
 
         $this->command->info('Success!');
+
+        // test
     }
 }
