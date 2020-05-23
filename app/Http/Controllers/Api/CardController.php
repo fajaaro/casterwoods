@@ -104,7 +104,9 @@ class CardController extends Controller
         $card->name;
 
         // Kalo pas nge-eksekusi kode line 81 berhasil, model bakalan di delete.
-        Storage::delete($card->image->url);
+        if ($card->image()->exists()) 
+            Storage::delete($card->image->url);
+        
         $card->delete();
 
         return response()->json([
