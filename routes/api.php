@@ -14,6 +14,7 @@ Route::name('api.')->namespace('Api')->group(function() {
 	Route::apiResource('transactions', 'TransactionController');
 	Route::get('/transactions/{transaction}/successAction', 'TransactionController@transactionSuccessAction')->name('transactions.successAction');
 	Route::get('/transactions/{transaction}/failedAction', 'TransactionController@transactionFailedAction')->name('transactions.failedAction');
+	Route::get('/categories', 'CategoryController@index')->name('categories.index');
 
 	Route::apiResource('itemTransactions', 'ItemTransactionController')->except(['index', 'show']);
 });
