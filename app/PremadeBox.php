@@ -2,10 +2,13 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class PremadeBox extends Model
 {
+    protected $fillable = ['premade_box_category_id', 'name', 'type', 'description', 'price', 'quantity'];
+
     public function premadeBoxCategory()
     {
     	return $this->belongsTo('App\PremadeBoxCategory');
@@ -19,5 +22,10 @@ class PremadeBox extends Model
     public function premadeTransactions()
     {
     	return $this->hasMany('App\PremadeTransaction');
+    }
+
+    public function scopeWithRelations(Builder $query)
+    {
+        return $query->with(['images', 'premadeTransactions']);
     }
 }

@@ -16,7 +16,9 @@ class CreatePremadeTransactionsTable extends Migration
             $table->text('card_content')->nullable();
             $table->string('receiver_name');
             $table->string('receiver_address');
+            $table->string('receiver_contact');
             $table->integer('total_price');
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }
