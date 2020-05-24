@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Storage;
 
 class BoxController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except(['index', 'show']);
+    }
+
     public function index() 
     {
         $boxes = BoxResource::collection(
@@ -29,7 +34,7 @@ class BoxController extends Controller
     {
         $newBox = Box::create($request->all());
 
-        $numberOfImages = count($request->file('images'));
+        $numberOfImages = count($request->file('images'));        
         for ($i = 0; $i < $numberOfImages; $i++) {
             $url = Storage::putFile('images/boxes', $request->file('images')[$i]);
 
@@ -37,6 +42,7 @@ class BoxController extends Controller
                 'url' => $url,
             ]);
         }
+        
 
         $box = new BoxResource(
             Box::withRelations()->where('id', $newBox->id)->first()

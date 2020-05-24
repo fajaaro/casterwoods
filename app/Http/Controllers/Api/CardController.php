@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Storage;
 
 class CardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except(['index', 'show']);
+    }
+
     public function index() 
     {
         $cards = CardResource::collection(

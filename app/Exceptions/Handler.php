@@ -52,6 +52,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        if ($request->expectsJson() && $exception instanceof AuthorizationException) {
+            return response()->json(['message' => $exception->getMessage()], 403);
+        }
+
         if ($exception instanceof ErrorException) {
             return response()->json([
                 'message' => 'Object not found.',

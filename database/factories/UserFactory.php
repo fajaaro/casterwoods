@@ -11,6 +11,7 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
         'remember_token' => Str::random(10),
+        'api_token' => Str::random(80),
     ];
 });
 
@@ -20,6 +21,5 @@ $factory->state(User::class, 'user-fajar', function (Faker $faker) {
         'email' => 'fajarhamdani70@gmail.com',
         'email_verified_at' => now(),
         'password' => Hash::make('fajar123'), 
-        'remember_token' => Str::random(10),
     ];
 });
