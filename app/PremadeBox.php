@@ -26,6 +26,6 @@ class PremadeBox extends Model
 
     public function scopeWithRelations(Builder $query)
     {
-        return $query->with(['images', 'premadeTransactions']);
+        return $query->with(['images', 'premadeTransactions', 'premadeBoxCategory']);
     }
 }

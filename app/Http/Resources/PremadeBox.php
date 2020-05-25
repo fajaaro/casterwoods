@@ -19,6 +19,7 @@ class PremadeBox extends JsonResource
             'created_at' => (string)$this->created_at,
             'updated_at' => (string)$this->updated_at,
             'images' => $this->whenLoaded('images'),
+            'premade_box_category' => $this->whenLoaded('premadeBoxCategory'),
             'premade_transactions' => $this->whenLoaded('premadeTransactions'),
         ];
     }
