@@ -29,6 +29,7 @@ class ItemController extends Controller
         ]);
     }
 
+    // only admin
     public function store(StoreItem $request)
     {
         $newItem = Item::create($request->all());
@@ -64,6 +65,7 @@ class ItemController extends Controller
         ]);     
     }
 
+    // only admin
     // use request: post, body: form-data and addition field _method: put. 
     public function update(UpdateItem $request, $id)
     {
@@ -93,6 +95,7 @@ class ItemController extends Controller
         ]);    
     }
 
+    // only admin
     public function destroy($id)
     {
         $item = Item::find($id);

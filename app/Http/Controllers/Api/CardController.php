@@ -30,6 +30,7 @@ class CardController extends Controller
         ]);
     }
 
+    // only admin
     public function store(StoreCard $request)
     {
         $newCard = Card::create($request->all());
@@ -64,6 +65,7 @@ class CardController extends Controller
         ]);        
     }
 
+    // only admin
     // use request: post, body: form-data and addition field _method: put. 
     public function update(UpdateCard $request, $id)
     {
@@ -101,6 +103,7 @@ class CardController extends Controller
         ]);                
     }
 
+    // only admin
     public function destroy($id)
     {
         $card = Card::find($id);

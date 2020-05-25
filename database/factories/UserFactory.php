@@ -20,6 +20,7 @@ $factory->state(User::class, 'user-fajar', function (Faker $faker) {
         'name' => 'Fajar Hamdani',
         'email' => 'fajarhamdani70@gmail.com',
         'email_verified_at' => now(),
-        'password' => Hash::make('fajar123'), 
+        'password' => Hash::make('fajar123'),
+        'is_admin' => 1, 
     ];
 });

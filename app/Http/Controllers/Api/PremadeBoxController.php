@@ -29,6 +29,7 @@ class PremadeBoxController extends Controller
         ]);
     }
 
+    // only admin
     public function store(StorePremadeBox $request)
     {
         $newPremadeBox = PremadeBox::create($request->all());
@@ -64,6 +65,7 @@ class PremadeBoxController extends Controller
         ]);        
     }
 
+    // only admin
     // use request: post, body: form-data and addition field _method: put. 
     public function update(UpdatePremadeBox $request, $id)
     {
@@ -93,6 +95,7 @@ class PremadeBoxController extends Controller
         ]);                
     }
 
+    // only admin
     public function destroy($id)
     {
         $premadeBox = PremadeBox::find($id);

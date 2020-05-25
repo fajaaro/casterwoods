@@ -17,6 +17,7 @@ class TransactionController extends Controller
         $this->middleware('auth:api');
     }
 
+    // only admin
     public function index()
     {
         $transactions = TransactionResource::collection(
@@ -29,6 +30,7 @@ class TransactionController extends Controller
         ]);
     }
 
+    // only admin
     public function store(StoreTransaction $request)
     {
         $boxBuyed = Box::find($request->input('box_id'));
@@ -63,6 +65,7 @@ class TransactionController extends Controller
         ]); 
     }
 
+    // only admin
     public function destroy($id)
     {
         $transaction = Transaction::find($id);
@@ -78,6 +81,7 @@ class TransactionController extends Controller
         ]);   
     }
 
+    // only admin
     public function transactionSuccessAction($id)
     {
         $transaction = Transaction::find($id);
@@ -109,6 +113,7 @@ class TransactionController extends Controller
         ]);         
     }
 
+    // only admin
     public function transactionFailedAction($id)
     {
         $transaction = Transaction::find($id);

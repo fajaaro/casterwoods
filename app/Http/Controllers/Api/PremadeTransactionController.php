@@ -16,6 +16,7 @@ class PremadeTransactionController extends Controller
         $this->middleware('auth:api');
     }
 
+    // only admin
     public function index()
     {
         $premadeTransactions = PremadeTransactionResource::collection(
@@ -28,6 +29,7 @@ class PremadeTransactionController extends Controller
         ]);
     }
 
+    // only admin
     public function store(StorePremadeTransaction $request)
     {
         $premadeBoxBuyed = PremadeBox::find($request->input('premade_box_id'));
@@ -61,6 +63,7 @@ class PremadeTransactionController extends Controller
         ]); 
     }
 
+    // only admin
     public function destroy($id)
     {
         $premadeTransaction = PremadeTransaction::find($id);
@@ -76,6 +79,7 @@ class PremadeTransactionController extends Controller
         ]);   
     }
 
+    // only admin
     public function premadeBoxTransactionSuccessAction($id)
     {
         $premadeTransaction = PremadeTransaction::find($id);
@@ -96,6 +100,7 @@ class PremadeTransactionController extends Controller
         ]);         
     }
 
+    // only admin
     public function premadeBoxTransactionFailedAction($id)
     {
         $premadeTransaction = PremadeTransaction::find($id);

@@ -30,6 +30,7 @@ class BoxController extends Controller
         ]);
     }
 
+    // only admin
     public function store(StoreBox $request)
     {
         $newBox = Box::create($request->all());
@@ -66,6 +67,7 @@ class BoxController extends Controller
         ]);        
     }
 
+    // only admin
     // use request: post, body: form-data and addition field _method: put. 
     public function update(UpdateBox $request, $id)
     {
@@ -95,6 +97,7 @@ class BoxController extends Controller
         ]);                
     }
 
+    // only admin
     public function destroy($id)
     {
         $box = Box::find($id);
