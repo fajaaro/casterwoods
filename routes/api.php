@@ -5,14 +5,26 @@ use Illuminate\Support\Facades\Route;
 
 Route::name('api.')->namespace('Api')->group(function() {
 	Route::get('/categories', 'CategoryController@index')->name('categories.index');
+
+	Route::get('/couriers', 'CourierController@index')->name('couriers.index');
+	
 	Route::apiResource('boxes', 'BoxController');
+
 	Route::apiResource('items', 'ItemController');
+
 	Route::apiResource('cards', 'CardController');
+
 	Route::apiResource('transactions', 'TransactionController')->except(['update']);
+
 	Route::get('/transactions/{transaction}/successAction', 'TransactionController@transactionSuccessAction')->name('transactions.successAction');
 	Route::get('/transactions/{transaction}/failedAction', 'TransactionController@transactionFailedAction')->name('transactions.failedAction');
+
+	Route::get('/premadeBoxCategories', 'PremadeBoxCategoryController@index')->name('premadeBoxCategories.index');
+
 	Route::apiResource('premadeBoxes', 'PremadeBoxController');
+
 	Route::apiResource('premadeTransactions', 'PremadeTransactionController')->except(['update']);
+
 	Route::get('/premadeTransactions/{premadeTransaction}/successAction', 'PremadeTransactionController@premadeBoxTransactionSuccessAction')->name('premadeTransactions.successAction');
 	Route::get('/premadeTransactions/{premadeTransaction}/failedAction', 'PremadeTransactionController@premadeBoxTransactionFailedAction')->name('premadeTransactions.failedAction');
 

@@ -16,6 +16,7 @@ class StorePremadeTransaction extends FormRequest
         return [
             'user_id' => ['required'],
             'premade_box_id' => ['required'],
+            'card_id' => ['required'],
             'courier_id' => ['required'],
             'receiver_name' => ['required'],
             'receiver_address' => ['required'],

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class PremadeBoxCategory extends Model
@@ -11,5 +12,10 @@ class PremadeBoxCategory extends Model
     public function premadeBoxes()
     {
     	return $this->hasMany('App\PremadeBox');
+    }
+
+    public function scopeWithRelations(Builder $query)
+    {
+    	return $query->with('premadeBoxes');
     }
 }

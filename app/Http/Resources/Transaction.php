@@ -17,6 +17,7 @@ class Transaction extends JsonResource
             'card_content' => $this->card_content,
             'receiver_name' => $this->receiver_name,
             'receiver_address' => $this->receiver_address,
+            'receiver_contact' => $this->receiver_contact,
             'total_price' => $this->total_price,
             'status' => $this->status,
             'created_at' => (string)$this->created_at,

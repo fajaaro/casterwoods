@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Courier extends Model
@@ -16,5 +17,10 @@ class Courier extends Model
     public function premadeTransactions()
     {
     	return $this->hasMany('App\PremadeTransaction');
+    }
+
+    public function scopeWithRelations(Builder $query)
+    {
+    	return $query->with(['transactions', 'premadeTransactions']);
     }
 }

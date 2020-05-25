@@ -23,6 +23,7 @@ class PremadeTransaction extends JsonResource
             'updated_at' => (string)$this->updated_at,
             'courier' => $this->whenLoaded('courier'),
             'premade_box' => $this->whenLoaded('premadeBox'),
+            'card' => $this->whenLoaded('card'),
             'user' => $this->whenLoaded('user'),
         ];
     }
