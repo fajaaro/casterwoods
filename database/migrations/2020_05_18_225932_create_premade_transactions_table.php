@@ -14,6 +14,7 @@ class CreatePremadeTransactionsTable extends Migration
             $table->foreignId('premade_box_id')->constrained()->onDelete('cascade');
             $table->foreignId('card_id')->constrained()->onDelete('cascade');
             $table->text('card_content')->nullable();
+            $table->text('additional_note')->nullable();            
             $table->foreignId('courier_id')->constrained();
             $table->string('receiver_name');
             $table->string('receiver_address');

@@ -15,6 +15,7 @@ class Transaction extends JsonResource
             'card_id' => $this->card_id,
             'courier_id' => $this->courier_id,
             'card_content' => $this->card_content,
+            'additional_note' => $this->additional_note,
             'receiver_name' => $this->receiver_name,
             'receiver_address' => $this->receiver_address,
             'receiver_contact' => $this->receiver_contact,

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PremadeTransaction extends Model
 {
-    protected $fillable = ['user_id', 'premade_box_id', 'courier_id', 'card_id', 'card_content', 'receiver_name', 'receiver_address', 'receiver_contact', 'total_price'];
+    protected $fillable = ['user_id', 'premade_box_id', 'courier_id', 'card_id', 'card_content', 'additional_note', 'receiver_name', 'receiver_address', 'receiver_contact', 'total_price'];
 
     public function courier()
     {
