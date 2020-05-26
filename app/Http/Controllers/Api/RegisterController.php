@@ -24,13 +24,10 @@ class RegisterController extends Controller
         $this->guard()->login($user);
 
         if ($response = $this->registered($request, $user)) {
-        	dd('response');
             return $response;
         }
 
-        return $request->wantsJson()
-                    ? new Response('', 201)
-                    : response()->json([
+        return response()->json([
                     	'status' => 'Register success!',
                     	'user' => Auth::user(),
                     ]);
