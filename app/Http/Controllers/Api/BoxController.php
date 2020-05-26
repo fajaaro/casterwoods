@@ -8,14 +8,17 @@ use App\Http\Requests\Box\StoreBox;
 use App\Http\Requests\Box\UpdateBox;
 use App\Http\Resources\Box as BoxResource;
 use App\Image;
+use App\Traits\AdminValidation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class BoxController extends Controller
 {
+    use AdminValidation;
+
     public function __construct()
     {
-        $this->middleware('auth:api')->except(['index', 'show']);
+        $this->middleware(['auth:api', 'admin'])->except(['index', 'show']);
     }
 
     public function index() 

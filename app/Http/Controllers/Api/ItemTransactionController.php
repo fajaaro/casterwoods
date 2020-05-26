@@ -16,7 +16,6 @@ class ItemTransactionController extends Controller
         $this->middleware('auth:api');
     }
 
-    // only admin
     public function store(StoreItemTransaction $request)
     {
         $newItem = ItemTransaction::create($request->all());
@@ -36,7 +35,6 @@ class ItemTransactionController extends Controller
         ]);
     }
 
-    // only admin
     public function update(UpdateItemTransaction $request, $id)
     {
         $item = ItemTransaction::find($id);
@@ -54,7 +52,6 @@ class ItemTransactionController extends Controller
         ]);    
     }
 
-    // only admin
     public function destroy($id)
     {
         $item = ItemTransaction::find($id);

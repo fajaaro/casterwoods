@@ -14,6 +14,7 @@ class PremadeTransactionController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api');
+        $this->middleware('admin')->except(['store', 'show']);
     }
 
     // only admin
@@ -29,7 +30,6 @@ class PremadeTransactionController extends Controller
         ]);
     }
 
-    // only admin
     public function store(StorePremadeTransaction $request)
     {
         $premadeBoxBuyed = PremadeBox::find($request->input('premade_box_id'));

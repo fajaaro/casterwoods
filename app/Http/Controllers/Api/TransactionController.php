@@ -15,6 +15,7 @@ class TransactionController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api');
+        $this->middleware('admin')->except(['store', 'show']);
     }
 
     // only admin
@@ -30,7 +31,6 @@ class TransactionController extends Controller
         ]);
     }
 
-    // only admin
     public function store(StoreTransaction $request)
     {
         $boxBuyed = Box::find($request->input('box_id'));
