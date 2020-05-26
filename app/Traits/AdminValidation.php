@@ -6,9 +6,9 @@ use App\User;
 
 trait AdminValidation
 {
-	public function checkBearerToken($bearerToken)
+	public function checkToken($token)
 	{
-		$user = User::where('api_token', $bearerToken)->first();
+		$user = User::where('api_token', $token)->first();
 
 		return $user->is_admin;
 	}

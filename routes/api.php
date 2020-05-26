@@ -7,6 +7,8 @@ Route::name('api.')->namespace('Api')->group(function() {
 	Route::post('/login', 'LoginController@login')->name('login');
 	Route::post('/register', 'RegisterController@register')->name('register');
 
+	Route::get('/isAdmin/{api_token}', 'ValidationController@validateAPIToken')->name('checkIsAdmin');
+
 	Route::get('/categories', 'CategoryController@index')->name('categories.index');
 
 	Route::get('/couriers', 'CourierController@index')->name('couriers.index');
