@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::name('api.')->namespace('Api')->group(function() {
+	Route::post('/login', 'LoginController@login')->name('login');
+	Route::post('/register', 'RegisterController@register')->name('register');
+
 	Route::get('/categories', 'CategoryController@index')->name('categories.index');
 
 	Route::get('/couriers', 'CourierController@index')->name('couriers.index');
