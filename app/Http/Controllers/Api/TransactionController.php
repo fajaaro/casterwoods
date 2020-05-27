@@ -7,6 +7,7 @@ use App\Card;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Transaction\StoreTransaction;
 use App\Http\Resources\Transaction as TransactionResource;
+use App\Jobs\SendEmailAfterNewTransactionAddedToDatabase;
 use App\PremadeTransaction;
 use App\Transaction;
 use Illuminate\Http\Request;
@@ -47,6 +48,8 @@ class TransactionController extends Controller
         $transaction = new TransactionResource(
             Transaction::withRelations()->where('id', $newTransaction->id)->first()
         );
+
+        SendEmailAfterNewTransactionAddedToDatabase::dispatch();
 
         return response()->json([
             'status' => 'Success create new transaction!',
