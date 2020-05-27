@@ -19,6 +19,7 @@ class PremadeTransaction extends JsonResource
             'receiver_address' => $this->receiver_address,
             'receiver_contact' => $this->receiver_contact,
             'total_price' => $this->total_price,
+            'order_key' => $this->order_key,
             'status' => $this->status,
             'created_at' => (string)$this->created_at,
             'updated_at' => (string)$this->updated_at,
