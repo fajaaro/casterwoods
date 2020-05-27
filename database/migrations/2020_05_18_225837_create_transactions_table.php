@@ -20,7 +20,7 @@ class CreateTransactionsTable extends Migration
             $table->string('receiver_address');
             $table->string('receiver_contact');            
             $table->integer('total_price');
-            $table->string('order_key', 5)->unique();
+            $table->string('order_key', 5);
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
