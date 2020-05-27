@@ -13,6 +13,7 @@ Route::name('api.')->namespace('Api')->group(function() {
 
 	Route::get('/categories', 'CategoryController@index')->name('categories.index');
 	Route::post('/categories', 'CategoryController@store')->name('categories.store');
+	Route::get('/categories/{category}', 'CategoryController@show')->name('categories.show');
 
 	Route::get('/couriers', 'CourierController@index')->name('couriers.index');
 	
@@ -29,6 +30,7 @@ Route::name('api.')->namespace('Api')->group(function() {
 
 	Route::get('/premadeBoxCategories', 'PremadeBoxCategoryController@index')->name('premadeBoxCategories.index');
 	Route::post('/premadeBoxCategories', 'PremadeBoxCategoryController@store')->name('premadeBoxCategories.store');
+	Route::get('/premadeBoxCategories/{premade_box_category}', 'PremadeBoxCategoryController@show')->name('premadeBoxCategories.show');
 
 	Route::apiResource('premadeBoxes', 'PremadeBoxController');
 

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
@@ -20,8 +21,8 @@ class Category extends Model
     	return $this->hasMany('App\Item');
     }
 
-    public function premadeBoxes()
+    public function scopeWithRelations(Builder $query)
     {
-    	return $this->hasMany('App\PremadeBox');
+        return $query->with(['boxes', 'items']);
     }
 }

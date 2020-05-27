@@ -40,4 +40,16 @@ class PremadeBoxCategoryController extends Controller
             'category' => $category,
         ]);        
     }
+
+    public function show($id)
+    {
+        $premadeBoxCategory = new PremadeBoxCategoryResource(
+            PremadeBoxCategory::withRelations()->where('id', $id)->first()
+        );
+
+        return response()->json([
+            'status' => 'Success get premade box category data!',
+            'premade_box_category' => $premadeBoxCategory,
+        ]); 
+    }
 }

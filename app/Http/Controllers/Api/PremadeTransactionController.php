@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PremadeTransaction\StorePremadeTransaction;
 use App\Http\Resources\PremadeTransaction as PremadeTransactionResource;
+use App\Jobs\SendEmailAfterPremadeBoxTransactionCreated;
 use App\PremadeBox;
 use App\PremadeTransaction;
 use Illuminate\Http\Request;
@@ -44,6 +45,8 @@ class PremadeTransactionController extends Controller
         $premadeTransaction = new PremadeTransactionResource(
             PremadeTransaction::withRelations()->where('id', $newPremadeTransaction->id)->first()
         );
+
+        SendEmailAfterPremadeBoxTransactionCreated::dispatch();
 
         return response()->json([
             'status' => 'Success create new premade box transaction!',

@@ -40,4 +40,16 @@ class CategoryController extends Controller
             'category' => $category,
         ]);
     }   
+
+    public function show($id)
+    {
+        $category = new CategoryResource(
+            Category::withRelations()->where('id', $id)->first()
+        );
+
+        return response()->json([
+            'status' => 'Success get category data!',
+            'category' => $category,
+        ]); 
+    }
 }
