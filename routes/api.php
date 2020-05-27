@@ -12,6 +12,7 @@ Route::name('api.')->namespace('Api')->group(function() {
 	Route::get('/checkKey/{order_key}', 'TransactionController@checkIfKeyExist')->name('transactions.checkKey');
 
 	Route::get('/categories', 'CategoryController@index')->name('categories.index');
+	Route::post('/categories', 'CategoryController@store')->name('categories.store');
 
 	Route::get('/couriers', 'CourierController@index')->name('couriers.index');
 	
@@ -27,6 +28,7 @@ Route::name('api.')->namespace('Api')->group(function() {
 	Route::get('/transactions/{transaction}/failedAction', 'TransactionController@transactionFailedAction')->name('transactions.failedAction');
 
 	Route::get('/premadeBoxCategories', 'PremadeBoxCategoryController@index')->name('premadeBoxCategories.index');
+	Route::post('/premadeBoxCategories', 'PremadeBoxCategoryController@store')->name('premadeBoxCategories.store');
 
 	Route::apiResource('premadeBoxes', 'PremadeBoxController');
 
