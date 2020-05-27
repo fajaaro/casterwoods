@@ -9,6 +9,8 @@ Route::name('api.')->namespace('Api')->group(function() {
 
 	Route::get('/isAdmin/{api_token}', 'ValidationController@validateAPIToken')->name('checkIsAdmin');
 
+	Route::get('/checkKey/{order_key}', 'TransactionController@checkIfKeyExist')->name('transactions.checkKey');
+
 	Route::get('/categories', 'CategoryController@index')->name('categories.index');
 
 	Route::get('/couriers', 'CourierController@index')->name('couriers.index');

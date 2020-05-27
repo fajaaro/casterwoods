@@ -10,6 +10,6 @@ $factory->define(Transaction::class, function (Faker $faker) {
 		'receiver_name' => $faker->firstName(),
 		'receiver_address' => $faker->address,
 		'receiver_contact' => $faker->freeEmail,
-		// test
+		'order_key' => $faker->lexify('?????'),
     ];
 });

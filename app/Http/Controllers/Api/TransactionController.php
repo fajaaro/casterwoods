@@ -7,6 +7,7 @@ use App\Card;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Transaction\StoreTransaction;
 use App\Http\Resources\Transaction as TransactionResource;
+use App\PremadeTransaction;
 use App\Transaction;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,8 @@ class TransactionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api');
-        $this->middleware('admin')->except(['store', 'show']);
+        $this->middleware('auth:api')->except(['checkIfKeyExist']);
+        $this->middleware('admin')->except(['store', 'show', 'checkIfKeyExist']);
     }
 
     // only admin
@@ -124,5 +125,17 @@ class TransactionController extends Controller
             'status' => 'Transaction status has been changed to failed (-1)!',
             'transaction' => $transaction,
         ]);         
+    }
+
+    public function checkIfKeyExist($orderKey)
+    {
+        $keyExist = false;
+        if (Transaction::where('order_key', $orderKey)->exists() || PremadeTransaction::where('order_key', $orderKey)->exists()) {
+            $keyExist = true;
+        }
+
+        return response()->json([
+            'key_exist' => $keyExist
+        ]);
     }
 }

@@ -21,6 +21,7 @@ class StoreTransaction extends FormRequest
             'receiver_name' => ['required'],
             'receiver_address' => ['required'],
             'receiver_contact' => ['required'],
+            'order_key' => ['required'],
         ];
     }
 }
