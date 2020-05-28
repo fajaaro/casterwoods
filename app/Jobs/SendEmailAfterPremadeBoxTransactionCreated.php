@@ -3,6 +3,8 @@
 namespace App\Jobs;
 
 use App\Mail\NewPremadeBoxTransaction;
+use App\Mail\PremadeTransactionAdded;
+use App\PremadeTransaction;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -15,9 +17,11 @@ class SendEmailAfterPremadeBoxTransactionCreated implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public function __construct()
+    public $premadeTransaction;
+
+    public function __construct(PremadeTransaction $premadeTransaction)
     {
-        //
+        $this->premadeTransaction = $premadeTransaction;
     }
 
     public function handle()
@@ -25,7 +29,7 @@ class SendEmailAfterPremadeBoxTransactionCreated implements ShouldQueue
         $adminUsers = User::where('is_admin', 1)->get();
 
         foreach ($adminUsers as $admin) {
-            Mail::to($admin)->send(new NewPremadeBoxTransaction);
+            Mail::to($admin)->send(new PremadeTransactionAdded($this->premadeTransaction, $admin));
         }
     }
 }

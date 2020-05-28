@@ -3,6 +3,8 @@
 namespace App\Jobs;
 
 use App\Mail\NewTransaction;
+use App\Mail\TransactionAdded;
+use App\Transaction;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -15,9 +17,11 @@ class SendEmailAfterNewTransactionAddedToDatabase implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public function __construct()
+    public $transaction;
+
+    public function __construct(Transaction $transaction)
     {
-        //
+        $this->transaction = $transaction;
     }
 
     public function handle()
@@ -25,7 +29,7 @@ class SendEmailAfterNewTransactionAddedToDatabase implements ShouldQueue
         $adminUsers = User::where('is_admin', 1)->get();
 
         foreach ($adminUsers as $admin) {
-            Mail::to($admin)->send(new NewTransaction);
+            Mail::to($admin)->send(new TransactionAdded($this->transaction, $admin));
         }
     }
 }

@@ -46,7 +46,7 @@ class PremadeTransactionController extends Controller
             PremadeTransaction::withRelations()->where('id', $newPremadeTransaction->id)->first()
         );
 
-        SendEmailAfterPremadeBoxTransactionCreated::dispatch();
+        SendEmailAfterPremadeBoxTransactionCreated::dispatch($newPremadeTransaction);
 
         return response()->json([
             'status' => 'Success create new premade box transaction!',

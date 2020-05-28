@@ -49,7 +49,7 @@ class TransactionController extends Controller
             Transaction::withRelations()->where('id', $newTransaction->id)->first()
         );
 
-        SendEmailAfterNewTransactionAddedToDatabase::dispatch();
+        SendEmailAfterNewTransactionAddedToDatabase::dispatch($newTransaction);
 
         return response()->json([
             'status' => 'Success create new transaction!',
