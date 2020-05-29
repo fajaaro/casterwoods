@@ -17,7 +17,6 @@ class Box extends JsonResource
         	'quantity' => $this->quantity,
         	'created_at' => (string)$this->created_at,
         	'updated_at' => (string)$this->updated_at,
-            'category' => $this->whenLoaded('category'),
             'images' => $this->whenLoaded('images'),
             'transactions' => $this->whenLoaded('transactions'),
         ];

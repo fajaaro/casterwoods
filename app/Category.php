@@ -11,11 +11,6 @@ class Category extends Model
 
     public $timestamps = false;
 
-    public function boxes()
-    {
-    	return $this->hasMany('App\Box');
-    }
-
     public function items()
     {
     	return $this->hasMany('App\Item');
@@ -23,6 +18,6 @@ class Category extends Model
 
     public function scopeWithRelations(Builder $query)
     {
-        return $query->with(['boxes', 'items']);
+        return $query->with('items');
     }
 }

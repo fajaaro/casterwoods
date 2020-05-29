@@ -9,11 +9,6 @@ class Box extends Model
 {
     protected $fillable = ['category_id', 'name', 'description', 'price', 'quantity'];
 
-    public function category()
-    {
-    	return $this->belongsTo('App\Category');
-    }
-
     public function images()
     {
     	return $this->morphMany('App\Image', 'imageable');
@@ -26,6 +21,6 @@ class Box extends Model
 
     public function scopeWithRelations(Builder $query)
     {
-        return $query->with(['category', 'images', 'transactions']);
+        return $query->with(['images', 'transactions']);
     }
 }

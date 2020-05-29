@@ -10,7 +10,6 @@ class CreateBoxesTable extends Migration
     {
         Schema::create('boxes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained();
             $table->string('name');
             $table->text('description')->nullable();
             $table->integer('price');

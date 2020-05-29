@@ -11,7 +11,6 @@ class Category extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name, 
-            'boxes' => $this->whenLoaded('boxes'),           
             'items' => $this->whenLoaded('items'),           
         ];
     }

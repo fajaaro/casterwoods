@@ -12,14 +12,7 @@ class BoxSeeder extends Seeder
 
     	$boxAmount = (int)$this->command->ask('How much box do you want?', 10);
 
-    	$categories = Category::all();
-
-    	factory('App\Box', $boxAmount)->make()->each(
-    		function ($box) use ($categories) {
-    			$box->category_id = $categories->random()->id;
-    			$box->save();
-    		}
-    	);   
+    	factory('App\Box', $boxAmount)->create();   
 
         $this->command->info('Success!');
     }

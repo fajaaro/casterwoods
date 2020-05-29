@@ -14,7 +14,6 @@ class UpdateBox extends FormRequest
     public function rules()
     {
         return [
-            'category_id' => ['required'],
             'name' => ['required'],
             'description' => ['required'],
             'price' => ['required'],
