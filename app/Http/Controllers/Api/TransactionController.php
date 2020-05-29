@@ -24,11 +24,11 @@ class TransactionController extends Controller
     public function index()
     {
         $transactions = TransactionResource::collection(
-            Transaction::withRelations()->get()
+            Transaction::withRelations()->orderBy('created_at', 'desc')->get()
         );
 
         return response()->json([
-            'status' => 'Success get all transactions data!',
+            'status' => 'Success get all transactions dataaa!',
             'transactions' => $transactions,
         ]);
     }

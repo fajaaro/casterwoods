@@ -22,7 +22,7 @@ class PremadeTransactionController extends Controller
     public function index()
     {
         $premadeTransactions = PremadeTransactionResource::collection(
-            PremadeTransaction::withRelations()->get()
+            PremadeTransaction::withRelations()->orderBy('created_at', 'desc')->get()
         );
 
         return response()->json([
