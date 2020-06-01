@@ -10,9 +10,11 @@ class CheckAdmin
 {
     public function handle(Request $request, Closure $next)
     {
+        $restrictedKey = $request->header('Restricted');
+
         $user = User::where('api_token', $request->bearerToken())->first();
         
-        if ($user->is_admin) {
+        if ($user->is_admin && $restrictedKey == 'Evertise2020') {
             return $next($request);
         }
 
