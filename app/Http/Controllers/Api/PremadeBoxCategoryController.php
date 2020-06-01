@@ -12,6 +12,7 @@ class PremadeBoxCategoryController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('restricted')->only(['index', 'show']);
         $this->middleware(['auth:api', 'admin'])->only(['store']);
     }
 

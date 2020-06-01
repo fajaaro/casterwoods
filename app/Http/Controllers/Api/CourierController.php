@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class CourierController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('restricted')->only(['index']);        
+    }
+
     public function index()
     {
     	$couriers = CourierResource::collection(
